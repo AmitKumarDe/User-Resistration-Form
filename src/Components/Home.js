@@ -3,10 +3,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import SignInImg from "./SignIn_Img";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { NavLink,useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const history = useNavigate();
@@ -62,8 +61,12 @@ const Home = () => {
       });
     } else {
       console.log("data added successfully");
-        history("/login");
+      history("/login");
       localStorage.setItem("userData", JSON.stringify([...data, inputData]));
+
+      setData(() => {
+        return { ...data, inputData };
+      });
     }
   };
 
